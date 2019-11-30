@@ -1,0 +1,133 @@
+.navbar-spalva{
+  background-color: #394a6d;
+  color: #fff;
+}
+#footer{
+  padding: 1% 15%;
+  text-align: center;
+}
+
+.footer-icon{
+  margin: 3% 10px;
+}
+
+.feature-box{
+  text-align: left;
+  padding: 2% 7%;
+}
+
+.description-box{
+  text-align: left;
+  padding: 15% 7%;
+}
+
+#main{
+  background-color: #fcf9ea;
+}
+
+.migtukas-atgal{
+  margin: 1% 2%;
+}
+
+.icon{
+  color: #c0ffb3;
+}
+
+.pricing{
+  padding: 50px;
+  font-family: "Oswald";
+  text-align: center;
+}
+
+h1{
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+
+.pricing-cards{
+  padding: 3% 2%;
+}
+
+.color-dviratis{
+  background-color: #c0ffb3;
+}
+
+.card-img img {
+  max-width: 100%;
+  vertical-align: top;
+  //height: 300px;
+}
+
+.table-border td, tr{
+  border: 1px solid white;
+}
+
+.table-border tr{
+  text-align: left;
+}
+
+.kiekio_dydis{
+  width: 40%;
+  padding-bottom: 15%;
+}
+
+.kiekio_spalva{
+  background-color: yellow;
+}
+
+.prekes_kaina{
+  font-size: 3.5rem;
+  color: #086fcf;
+  text-align: left;
+  letter-spacing: -2px;
+  line-height: 108.33333%;
+}
+
+.prekes_pavadinimas{
+  font-weight: 700;
+  text-align: left;
+}
+
+.nuotraukos-dydis{
+  width: 200px;
+    height: 120px;
+}
+
+.nuotraukos-dydis img{
+  width: 100%;
+  height: auto;
+}
+
+.detales_nuotrauka{
+  max-width: 100%;
+  vertical-align: top;
+  height: 400px;
+}
+
+.keitimo_pavadinimas{
+  padding-bottom: 3%;
+  text-align: left;
+}
+
+.input-length{
+  width: 40%;
+}
+.paslinti-redaguoti-migtukai{
+  padding: auto;
+  display: inline-block;
+  padding-bottom: 1%;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  text-align: center;
+  padding: 7% 10px;
+}
+
+.form-control-pad{
+  padding: 3% 1%;
+}
