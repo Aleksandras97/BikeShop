@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+  return view('index');
 });
+
+Route::get('/dviratis', 'BikeController@index')->name('DviraciuSarasas');
+
+Route::resource('dviratis', 'BikeController');
