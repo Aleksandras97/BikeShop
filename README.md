@@ -1,2 +1,2 @@
 # BikeShop
-Web page for bike shop
+Web page for bike shop using laravel
