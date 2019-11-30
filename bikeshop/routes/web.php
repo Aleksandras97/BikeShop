@@ -18,3 +18,11 @@ Route::get('/', function(){
 Route::get('/dviratis', 'BikeController@index')->name('DviraciuSarasas');
 
 Route::resource('dviratis', 'BikeController');
+
+Route::get('/detale', 'DetaleController@index')->name('DetaliuSarasas');;
+
+Route::resource('detale', 'DetaleController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
