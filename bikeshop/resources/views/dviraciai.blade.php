@@ -2,10 +2,12 @@
 
 @section('content')
 <section class="pricing" id="main">
+  @can('Admin')
   <div class=" col-lg-2">
     <a href="dviratis/create"><button class="btn btn-lg btn-block btn-outline-dark" type="button">Pridėti Dvirati</button></a>
 
   </div>
+  @endcan
   <h1>Dviračiai</h1>
   <div class="row">
     @if (count($dviraciai) > 0 )

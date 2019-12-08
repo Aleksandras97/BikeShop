@@ -23,6 +23,18 @@ Route::get('/detale', 'DetaleController@index')->name('DetaliuSarasas');;
 
 Route::resource('detale', 'DetaleController');
 
+Route::get('/DviraciuPirkimai', 'DviraciuPirkimuController@index')->name('DviraciuPirkimuSarasas');
+
+Route::resource('DviraciuPirkimai', 'DviraciuPirkimuController');
+
+Route::get('/DetaliuPirkimai', 'DetaliuPirkimuController@index')->name('DviraciuPirkimuSarasas');
+
+Route::resource('DetaliuPirkimai', 'DetaliuPirkimuController');
+
+Route::get('/dviraciuPirkimai', function(){
+  return view('pirkimai');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

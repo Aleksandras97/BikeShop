@@ -15,11 +15,14 @@ class CreateDviratisTable extends Migration
     {
         Schema::create('dviratis', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->nullable();
             $table->string('pavadinimas');
             $table->text('aprasymas');
             $table->integer('kiekis');
             $table->double('kaina');
             $table->string('prekeszenklas');
+            $table->string('nuotrauka');
+            $table->boolean('approved')->default(0);
             $table->timestamps();
         });
     }
