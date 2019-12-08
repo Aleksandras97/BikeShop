@@ -37,7 +37,7 @@
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                Dviračiai
+                <i class="lol fas fa-bicycle"></i> Dviračiai
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,10 @@
                           <!--  gates  -->
                     @can('patvirtinimoManagment')
                     <li class="nav-item">
-                    <a class="nav-link" href="/DviraciuPirkimai">Pirkimai</a>
+                    <a class="nav-link" href="/DviraciuPirkimai">Dviračių Pirkimai</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/DetaliuPirkimai">Detalių Pirkimai</a>
                     </li>
                     @endcan
                     <li class="nav-item">

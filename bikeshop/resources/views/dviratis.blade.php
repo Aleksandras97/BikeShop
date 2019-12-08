@@ -10,6 +10,7 @@
 
 
       <div class="nuotraukos-dydis feature-box col-lg-7">
+        @can('Admin')
         <div class="paslinti-redaguoti-migtukai">
           <a href="/dviratis/{{ $dviratis->id }}/edit"><button class="btn btn-sm btn-dark" type="button">Redaguoti</button></a>
 
@@ -21,6 +22,7 @@
             <button type="sumbit" class="btn btn-sm btn-danger" type="button">Pašalinti</button>
           </form>
         </div>
+        @endcan
         <img src="{{ $dviratis->nuotrauka}}" alt="sample85" />
       </div>
       <div class="feature-box col-lg-5">
@@ -44,11 +46,6 @@
           @endif
         </form>
       </div>
-
-        <div class="form-group">
-          <label for="userID"></label>
-          <input type="number" class="form-control" name="userID" id="userID">
-        </div>
 
 
 

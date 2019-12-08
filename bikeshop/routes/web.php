@@ -27,6 +27,10 @@ Route::get('/DviraciuPirkimai', 'DviraciuPirkimuController@index')->name('Dvirac
 
 Route::resource('DviraciuPirkimai', 'DviraciuPirkimuController');
 
+Route::get('/DetaliuPirkimai', 'DetaliuPirkimuController@index')->name('DviraciuPirkimuSarasas');
+
+Route::resource('DetaliuPirkimai', 'DetaliuPirkimuController');
+
 Route::get('/dviraciuPirkimai', function(){
   return view('pirkimai');
 });

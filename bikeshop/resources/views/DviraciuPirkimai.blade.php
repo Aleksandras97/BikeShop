@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+  use App\User;
+@endphp
   <section id="main">
     <table class="table">
       <thead class="thead-light">
         <tr>
           <th scope="col">#id</th>
-          <th scope="col">UserId</th>
+          <th scope="col">Pirkejo vardas</th>
           <th scope="col">PrekesId</th>
           <th scope="col">Pavadinimas</th>
           <th scope="col">kiekis</th>
@@ -17,9 +20,13 @@
           @if (count($nupirktidviraciai) > 0 )
             <tbody>
               @foreach ($nupirktidviraciai as $nupirktasdviratis)
+              @php
+                $id = $nupirktasdviratis->user_id;
+                $user = User::find($id);
+              @endphp
                 <tr>
                   <th scope="col">{{$nupirktasdviratis->id}}</th>
-                  <th scope="col">{{$nupirktasdviratis->user_id}}</th>
+                  <th scope="col">{{$user->name}}</th>
                   <th scope="col">{{$nupirktasdviratis->dviratis_id}}</th>
                   <th scope="col">{{$nupirktasdviratis->pavadinimas}}</th>
                   <th scope="col">{{$nupirktasdviratis->kiekis}}</th>

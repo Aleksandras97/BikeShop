@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NupirktaDetale;
+use App\Models\Detale;
 
 class DetaliuPirkimuController extends Controller
 {
@@ -13,7 +15,8 @@ class DetaliuPirkimuController extends Controller
      */
     public function index()
     {
-        //
+      $nupirktadetale = NupirktaDetale::orderBy('id', 'asc')->get();
+      return view('DetaliuPirkimai')->with('nupirktosdetales', $nupirktadetale);
     }
 
     /**
@@ -34,7 +37,28 @@ class DetaliuPirkimuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request,
+        [
+          'user_id' => 'required',
+          'detale_id' => 'required',
+          'pavadinimas' => 'required',
+          'kiekis' => 'required',
+          'kaina' => 'required'
+        ]
+      );
+
+      $nupirktadetale = new NupirktaDetale();
+      $nupirktadetale->user_id = $request->input('user_id');
+      $nupirktadetale->detale_id = $request->input('detale_id');
+      $nupirktadetale->pavadinimas = $request->input('pavadinimas');
+      $kiekis = $request->input('kiekis');
+      $kaina = $request->input('kaina');
+      $kiekiokaina = $kiekis * $kaina;
+      $nupirktadetale->kiekis = $kiekis;
+      $nupirktadetale->kaina = $kiekiokaina;
+      $nupirktadetale->save();
+
+      return redirect('detale')->with('success', 'Sėkmingai nupirkote laukite patvirtinimo!');
     }
 
     /**
@@ -68,7 +92,26 @@ class DetaliuPirkimuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $nupirktadetale = NupirktaDetale::find($id);
+      $idDvi = $nupirktadetale->detale_id;
+      $detale = Detale::find($idDvi);
+      $kiekis = $detale->kiekis;
+      $kiekis -= $nupirktadetale->kiekis;
+      if ($kiekis >= 0) {
+        // code...
+        $detale->kiekis = $kiekis;
+        $detale->save();
+      }
+      else{
+        return redirect('DetaliuPirkimai')->withErrors('success', 'Patvirtinti negalima, nes sandelyje detalių nėra');
+      }
+      $patvirtinimas = 1;
+      $nupirktadetale->patvirtinti = $patvirtinimas;
+
+      $nupirktadetale->save();
+
+
+      return redirect('DetaliuPirkimai')->with('success', 'Patvirtinta');
     }
 
     /**

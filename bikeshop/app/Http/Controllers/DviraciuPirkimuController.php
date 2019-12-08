@@ -16,7 +16,7 @@ class DviraciuPirkimuController extends Controller
     public function index()
     {
       $nupirktidviraciai = NupirktasDviratis::orderBy('id', 'asc')->get();
-      return view('pirkimai')->with('nupirktidviraciai', $nupirktidviraciai);
+      return view('DviraciuPirkimai')->with('nupirktidviraciai', $nupirktidviraciai);
     }
 
     /**

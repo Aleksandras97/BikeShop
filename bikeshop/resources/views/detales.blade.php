@@ -3,10 +3,12 @@
 @section('content')
 
 <section class="pricing" id="main">
+  @can('Admin')
   <div class=" col-lg-2">
     <a href="detale/create"><button class="btn btn-lg btn-block btn-outline-dark" type="button">Pridėti Deatle</button></a>
 
   </div>
+  @endcan
   <h1>Detalės</h1>
   <div class="row">
     @if (count($detales) > 0 )
