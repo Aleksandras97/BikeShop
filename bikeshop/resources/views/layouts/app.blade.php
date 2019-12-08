@@ -55,6 +55,12 @@
                     <li class="nav-item">
                       <a class="nav-link  {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                     </li>
+                          <!--  gates  -->
+                    @can('patvirtinimoManagment')
+                    <li class="nav-item">
+                    <a class="nav-link" href="/DviraciuPirkimai">Pirkimai</a>
+                    </li>
+                    @endcan
                     <li class="nav-item">
                       <a class="nav-link {{ Request::is('dvitatis') ? 'active' : '' }}" href="/dviratis">Dviraciai</a>
                     </li>
@@ -71,22 +77,21 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" >
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                              <a class="nav-link" href="{{ route('logout') }}"
+                                 onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                                  {{ __('Logout') }}
+                              </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  @csrf
+                              </form>
                         </li>
                     @endguest
                 </ul>
@@ -101,7 +106,7 @@
     <i class="footer-icon fab fa-facebook-f"></i>
     <i class="footer-icon fab fa-twitter"></i>
     <i class="footer-icon far fa-envelope"></i>
-    <p>© Copyright 2019 | Aleksandr Naruševic IFF 7/3</p>
+    <p>© Copyright 2019 | Aleksandr Naruševič IFF 7/3</p>
   </section>
 
 </body>

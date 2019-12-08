@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetalesTable extends Migration
+class CreateNupirktasDviratisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateDetalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detales', function (Blueprint $table) {
+        Schema::create('nupirktas_dviratis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id');
+            $table->integer('dviratis_id');
             $table->string('pavadinimas');
-            $table->text('aprasymas');
             $table->integer('kiekis');
-            $table->double('kaina');
-            $table->string('prekeszenklas');
-            $table->string('nuotrauka');
-            $table->boolean('approved')->default(0);
+            $table->float('kaina');
+            $table->boolean('patvirtinti')->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateDetalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detales');
+        Schema::dropIfExists('nupirktas_dviratis');
     }
 }
