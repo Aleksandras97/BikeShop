@@ -38,7 +38,7 @@
                       @if($nupirktasdviratis->patvirtinti)
 
                       @else
-                      <a href="/DviraciuPirkimai/{{ $nupirktasdviratis->id }}/edit"><button type="submit" class="btn btn-primary">Patvirtinti</button></a>
+                      <a href="/DviraciuPirkimai/{{ $nupirktasdviratis->id }}/edit"><button type="submit" id="togglee" class="btn btn-primary">Patvirtinti</button></a>
                       @endif
                       @if($nupirktasdviratis->patvirtinti)
                       <span class="badge badge-success">Patvirtinta</span>

@@ -72,11 +72,11 @@
                     </li>
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">Prisijungti</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">Registruotis</a>
                             </li>
                         @endif
                     @else
@@ -89,7 +89,7 @@
                               <a class="nav-link" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
-                                  {{ __('Logout') }}
+                                  Atsijungti
                               </a>
 
                               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -109,7 +109,7 @@
     <i class="footer-icon fab fa-facebook-f"></i>
     <i class="footer-icon fab fa-twitter"></i>
     <i class="footer-icon far fa-envelope"></i>
-    <p>© Copyright 2019 | Aleksandr Naruševič IFF 7/3</p>
+    <p>© Copyright 2019 Dvirčių užsakymo ir pardavimo portalas | Aleksandr Naruševič IFF 7/3</p>
   </section>
 
 </body>

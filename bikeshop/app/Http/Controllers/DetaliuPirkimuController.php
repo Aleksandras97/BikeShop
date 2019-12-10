@@ -49,16 +49,23 @@ class DetaliuPirkimuController extends Controller
 
       $nupirktadetale = new NupirktaDetale();
       $nupirktadetale->user_id = $request->input('user_id');
-      $nupirktadetale->detale_id = $request->input('detale_id');
+      $idDet = $request->input('detale_id');
+      $nupirktadetale->detale_id = $idDet;
       $nupirktadetale->pavadinimas = $request->input('pavadinimas');
+
+      $detale = Detale::find($idDet);
+      $kiekisDet = $detale->kiekis;
       $kiekis = $request->input('kiekis');
+      if ($kiekis < 0 || $kiekis > $kiekisDet) {
+        return redirect('detale/ '. $request->input('detale_id'))->with('danger', 'Užsakymo klaida, nes sandelyje tiek detalių nėra');
+      }
       $kaina = $request->input('kaina');
       $kiekiokaina = $kiekis * $kaina;
       $nupirktadetale->kiekis = $kiekis;
       $nupirktadetale->kaina = $kiekiokaina;
       $nupirktadetale->save();
 
-      return redirect('detale')->with('success', 'Sėkmingai nupirkote laukite patvirtinimo!');
+      return redirect('detale')->with('success', 'Sėkmingai užsakėte laukite patvirtinimo!');
     }
 
     /**
@@ -103,7 +110,7 @@ class DetaliuPirkimuController extends Controller
         $detale->save();
       }
       else{
-        return redirect('DetaliuPirkimai')->withErrors('success', 'Patvirtinti negalima, nes sandelyje detalių nėra');
+        return redirect('DetaliuPirkimai')->with('danger', 'Patvirtinti negalima, nes sandelyje tiek detalių nėra');
       }
       $patvirtinimas = 1;
       $nupirktadetale->patvirtinti = $patvirtinimas;

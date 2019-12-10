@@ -49,16 +49,23 @@ class DviraciuPirkimuController extends Controller
 
       $nupirktidviraciai = new NupirktasDviratis();
       $nupirktidviraciai->user_id = $request->input('user_id');
-      $nupirktidviraciai->dviratis_id = $request->input('dviratis_id');
+      $idDvi = $request->input('dviratis_id');
+      $nupirktidviraciai->dviratis_id = $idDvi;
       $nupirktidviraciai->pavadinimas = $request->input('pavadinimas');
+
+      $dviratis = Dviratis::find($idDvi);
+      $kiekisDvi = $dviratis->kiekis;
       $kiekis = $request->input('kiekis');
+      if ($kiekis < 0 || $kiekis > $kiekisDvi) {
+        return redirect('dviratis/ '. $request->input('dviratis_id'))->with('danger', 'Užsakymo klaida, nes sandelyje tiek dviračių nėra');
+      }
       $kaina = $request->input('kaina');
       $kiekiokaina = $kiekis * $kaina;
       $nupirktidviraciai->kiekis = $kiekis;
       $nupirktidviraciai->kaina = $kiekiokaina;
       $nupirktidviraciai->save();
 
-      return redirect('dviratis')->with('success', 'Sėkmingai nupirkote laukite patvirtinimo!');
+      return redirect('dviratis')->with('success', 'Sėkmingai užsakėte laukite patvirtinimo!');
     }
 
     /**
@@ -102,7 +109,7 @@ class DviraciuPirkimuController extends Controller
         $dviratis->save();
       }
       else{
-        return redirect('DviraciuPirkimai')->withErrors('success', 'Patvirtinti negalima, nes sandelyje dviračių nėra');
+        return redirect('DviraciuPirkimai')->with('danger', 'Patvirtinti negalima, nes sandelyje tiek dviračių nėra');
       }
       $patvirtinimas = 1;
       $nupirktidviraciai->patvirtinti = $patvirtinimas;

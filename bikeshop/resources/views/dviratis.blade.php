@@ -28,22 +28,31 @@
       <div class="feature-box col-lg-5">
         <form action="/DviraciuPirkimai" method="post">
           @csrf
-          <input type="hidden" name="user_id" value="{{Auth::user()->getId()}}">
+          @if(Auth::check())
+          <input type="hidden" name="user_id" value="{{ Auth::user()->getId()}}">
+          @else
+          <input type="hidden" name="user_id" value="">
+          @endif
           <input type="hidden" name="dviratis_id" value="{{ $dviratis->id }}">
           <input type="hidden" name="pavadinimas" value="{{ $dviratis->pavadinimas }}">
           <input type="hidden" name="kaina" value="{{ $dviratis->kaina }}">
           <h2 class="prekes_pavadinimas">{{ $dviratis->pavadinimas }}</h2>
           <h2 class="prekes_pavadinimas" ><strong>Keikis sandelyje: </strong>{{ $dviratis->kiekis}}</h2>
+          @if(Auth::check())
           <div class="form-group">
             <label for="kiekis"></label>
-            <input type="number" class="form-control" name="kiekis" id="kiekis" placeholder="Iveskite kiekį">
+            <input type="number" class="form-control" name="kiekis" id="kiekis" value="{{ old('kiekis')}}" placeholder="Iveskite kiekį">
           </div>
+          @else
+          @endif
           <h3 class="prekes_kaina">{{ $dviratis->kaina}}€</h3>
+          @can('Prisijunges')
           @if ($dviratis->kiekis >= 1)
-          <button type="submit" class="btn btn-lg btn-block btn-dark"><i class="fas fa-shopping-cart"></i> Pirkti</button>
+          <button type="submit" class="btn btn-lg btn-block btn-dark"><i class="fas fa-shopping-cart"></i> Užsakyti</button>
           @else
           <h2>Baigėsi</h2>
           @endif
+          @endcan
         </form>
       </div>
 

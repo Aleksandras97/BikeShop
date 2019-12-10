@@ -40,8 +40,8 @@ class BikeController extends Controller
           [
             'pavadinimas' => 'required',
             'aprasymas' => 'required',
-            'kaina' => 'required',
-            'kiekis' => 'required',
+            'kaina' => 'required|integer',
+            'kiekis' => 'required|integer',
             'prekeszenklas' => 'required',
             'nuotrauka' => 'required'
           ]
