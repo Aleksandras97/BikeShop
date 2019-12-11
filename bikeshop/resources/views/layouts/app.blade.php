@@ -53,7 +53,7 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                      <a class="nav-link  {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                      <a class="nav-link  {{ Request::is('/') ? 'active' : '' }}" href="/">Namai</a>
                     </li>
                           <!--  gates  -->
                     @can('patvirtinimoManagment')
@@ -65,10 +65,10 @@
                     </li>
                     @endcan
                     <li class="nav-item">
-                      <a class="nav-link {{ Request::is('dvitatis') ? 'active' : '' }}" href="/dviratis">Dviraciai</a>
+                      <a class="nav-link {{ Request::is('dvitatis') ? 'active' : '' }}" href="/dviratis">Dviračiai</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link {{ Request::is('detale') ? 'active' : '' }}" href="/detale">Detales</a>
+                      <a class="nav-link {{ Request::is('detale') ? 'active' : '' }}" href="/detale">Detalės</a>
                     </li>
                     @guest
                         <li class="nav-item">

@@ -129,6 +129,9 @@ class DetaliuPirkimuController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $nupirktadetale = NupirktaDetale::find($id);
+      $nupirktadetale->delete();
+
+      return redirect('DetaliuPirkimai')->with('success', 'Detalė iš pirkimų sąrašo pašalinta sėkmingai');
     }
 }
