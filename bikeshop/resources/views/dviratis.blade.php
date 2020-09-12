@@ -4,6 +4,51 @@
 
 <section id="main">
   <a href="/dviratis"><button type="button" name="button" class="btn btn-success migtukas-atgal">Go back</button></a>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">kiekis</th>
+        <th scope="col">įrašyti kieki</th>
+        <th scope="col">kaina</th>
+        <th scope="col">migtukas užsakyti</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <form action="/DviraciuPirkimai" method="post">
+            @csrf
+            @if(Auth::check())
+            <input type="hidden" name="user_id" value="{{ Auth::user()->getId()}}">
+            @else
+            <input type="hidden" name="user_id" value="">
+            @endif
+            <input type="hidden" name="dviratis_id" value="{{ $dviratis->id }}">
+            <input type="hidden" name="pavadinimas" value="{{ $dviratis->pavadinimas }}">
+            <input type="hidden" name="kaina" value="{{ $dviratis->kaina }}">
+            <th scope="col">{{$dviratis->kiekis}}</th>
+            <th scope="col ginismas">
+              @if(Auth::check())
+              <div class="form-group">
+                <label for="kiekis"></label>
+                <input type="number" class="form-control" name="kiekis" id="kiekis" value="{{ old('kiekis')}}" placeholder="Iveskite kiekį">
+              </div>
+              @else
+              @endif
+            </th>
+            <th scope="col">{{$dviratis->kaina}}</th>
+            <th scope="col">
+              @can('Prisijunges')
+              @if ($dviratis->kiekis >= 1)
+              <button type="submit" class="btn btn-lg btn-block btn-dark"><i class="fas fa-shopping-cart"></i> Užsakyti</button>
+              @else
+              <h2>Baigėsi</h2>
+              @endif
+              @endcan
+            </th>
+          </form>
+        </tr>
+    </tbody>
+  </table>
 
     <div class="row">
 
